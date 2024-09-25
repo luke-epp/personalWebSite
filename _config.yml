@@ -1,0 +1,11 @@
+encoding: utf-8
+title: "Your Awesome Website"
+email: your-email@example.com
+description: "A personal website and blog hosted on GitHub Pages."
+baseurl: ""  # The subpath of your site, e.g. /blog
+url: "https://<yourusername>.github.io" # Your GitHub Pages URL
+github_username: <yourusername>
+theme: minima # Optional, you can use other themes or create your own
+
+# Build settings
+markdown: kramdown
