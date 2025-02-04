@@ -4,15 +4,5 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+My name is Luke Epp, I care about data, coding, finance, math, statistics, etc. I currently work as a quantitative developer for cQuant.io and 
+I write about math, markets, coding, and the intersection of those 3 things here in my free time. Feel free to reach out at my [email](leppster13@gmail.com) or my [linkedin](https://www.linkedin.com/in/luke-epp-s/ ) if you want to chat.
