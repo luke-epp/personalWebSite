@@ -12,4 +12,4 @@ You can get in touch with me at my email: leppster13@gmail.com or via linkedin: 
 
 ## Recent Posts
 
-- [My First Blog Post]({{ site.baseurl }}{% post_url 2024-09-25-welcome-to-jekyll %})
+- [A Few Trade Ideas in Early 2025]({{ site.baseurl }}{% post_url 2025-02-02-early2025tradingideas %})
