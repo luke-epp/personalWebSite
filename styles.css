@@ -1,25 +1,96 @@
 /* Custom CSS styles */
 .navbar {
     padding: 1rem 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .quarto-title-block .quarto-title-banner {
-    background: #f8f9fa;
     padding: 2rem 0;
+    background: rgba(44, 44, 44, 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .about-image {
     border-radius: 50%;
     max-width: 200px;
+    border: 3px solid #00bc8c;
+    box-shadow: 0 0 20px rgba(0, 188, 140, 0.3);
 }
 
 .blog-post {
     margin-bottom: 2rem;
+    background: rgba(44, 44, 44, 0.8);
+    border-radius: 8px;
+    padding: 1.5rem;
 }
 
 .footer {
     margin-top: 2rem;
     padding: 2rem 0;
-    background: #f8f9fa;
+    background: rgba(44, 44, 44, 0.8);
     text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* Resume styles */
+.resume-container {
+    margin: 2rem 0;
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #2c2c2c;
+}
+
+/* Project card styles */
+.project-card {
+    background: rgba(44, 44, 44, 0.8);
+    border: 1px solid #3d3d3d;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 188, 140, 0.2);
+    border-color: #00bc8c;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: #00bc8c;
+    font-weight: 600;
+}
+
+.project-card ul {
+    padding-left: 1.2rem;
+}
+
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add selection color */
+::selection {
+    background: rgba(0, 188, 140, 0.3);
+    color: #fff;
+}
+
+/* Add link hover effect */
+a:not(.nav-link):not(.navbar-brand):hover {
+    color: #00bc8c !important;
+    text-decoration: none;
+    border-bottom: 2px solid #00bc8c;
+}
+
+/* Add transition to all links */
+a {
+    transition: all 0.2s ease-in-out;
 } 

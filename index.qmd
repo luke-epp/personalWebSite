@@ -1,22 +1,26 @@
 ---
 title: "Welcome!"
-image: profile.jpg
+image: assets/me.jpeg
 about:
   template: jolla
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com/in/your-profile
+      href: https://www.linkedin.com/in/luke-epp-s/
     - icon: github
       text: Github
-      href: https://github.com/your-profile
+      href: https://github.com/luke-epp
     - icon: medium
       text: Medium
-      href: https://medium.com/@your-profile
+      href: https://medium.com/@lukeepp
 ---
 
 ## Hello, I'm Luke!
 
-Welcome to my personal website. I'm passionate about [your interests/field]. Here you'll find my thoughts, projects, and experiences in [your field/interests].
+Welcome to my personal website. I'm currently a quantitative developer at cQuant, outside of work and programming I enjoy rock climbing, reading, birding, and sports.
 
-You can check out my [blog](/blog) for my latest writings, view my [projects](/projects), or download my [resume](/resume). 
+Feel free to:
+- Download my [resume](/resume) to learn more about my professional background
+- Check out my [projects](/projects) to see what I've been working on
+- Read my [blog](/blog) for technical insights and experiences
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/luke-epp-s/) or [GitHub](https://github.com/luke-epp) 

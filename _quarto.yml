@@ -5,6 +5,8 @@ project:
 website:
   title: "Luke's Personal Website"
   navbar:
+    background: dark
+    search: true
     left:
       - href: index.qmd
         text: Home
@@ -16,14 +18,19 @@ website:
         text: Resume
     right:
       - icon: linkedin
-        href: https://linkedin.com/in/your-profile
+        href: https://www.linkedin.com/in/luke-epp-s/
       - icon: medium
-        href: https://medium.com/@your-profile
+        href: https://medium.com/@lukeepp
       - icon: github
-        href: https://github.com/your-profile
+        href: https://github.com/luke-epp
 
 format:
   html:
-    theme: cosmo
+    theme:
+      dark: [darkly, custom.scss]
     css: styles.css
-    toc: true 
+    toc: true
+    page-layout: full
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github-dark 

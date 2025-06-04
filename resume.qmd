@@ -1,0 +1,16 @@
+---
+title: "Resume"
+format:
+  html:
+    css: styles.css
+---
+
+## Download Resume
+
+You can download my resume directly: [Download PDF](assets/LukeEppResume.pdf)
+
+## Preview
+
+<div class="resume-container">
+  <iframe src="assets/LukeEppResume.pdf" width="100%" height="800px"></iframe>
+</div> 

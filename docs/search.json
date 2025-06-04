@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "Welcome!",
     "section": "",
-    "text": "Welcome to my personal website. I’m passionate about [your interests/field]. Here you’ll find my thoughts, projects, and experiences in [your field/interests].\nYou can check out my blog for my latest writings, view my projects, or download my resume."
+    "text": "Welcome to my personal website. I’m currently a quantitative developer at cQuant, outside of work and programming I enjoy rock climbing, reading, birding, and sports.\nFeel free to: - Download my resume to learn more about my professional background - Check out my projects to see what I’ve been working on - Read my blog for technical insights and experiences - Connect with me on LinkedIn or GitHub"
   },
   {
     "objectID": "index.html#hello-im-luke",
     "href": "index.html#hello-im-luke",
     "title": "Welcome!",
     "section": "",
-    "text": "Welcome to my personal website. I’m passionate about [your interests/field]. Here you’ll find my thoughts, projects, and experiences in [your field/interests].\nYou can check out my blog for my latest writings, view my projects, or download my resume."
+    "text": "Welcome to my personal website. I’m currently a quantitative developer at cQuant, outside of work and programming I enjoy rock climbing, reading, birding, and sports.\nFeel free to: - Download my resume to learn more about my professional background - Check out my projects to see what I’ve been working on - Read my blog for technical insights and experiences - Connect with me on LinkedIn or GitHub"
   },
   {
     "objectID": "About/website.html",
@@ -40,5 +40,47 @@
     "title": "My First Blog Post",
     "section": "",
     "text": "In this post, I’ll demonstrate how to create a simple visualization using R.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Create some sample data\ndata &lt;- data.frame(\n  x = 1:10,\n  y = rnorm(10)\n)\n\n# Create a plot\nggplot(data, aes(x = x, y = y)) +\n  geom_line() +\n  geom_point() +\n  theme_minimal() +\n  labs(\n    title = \"Sample Plot\",\n    x = \"X axis\",\n    y = \"Y axis\"\n  )\n\n\n\n\n\n\n\n\nThis is just a simple example of what you can do with R and Quarto. You can include:\n\nCode blocks with syntax highlighting\nMathematical equations\nImages and figures\nTables\nCitations\n\nStay tuned for more interesting content!"
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "You can download my resume directly: Download PDF"
+  },
+  {
+    "objectID": "resume.html#download-resume",
+    "href": "resume.html#download-resume",
+    "title": "Resume",
+    "section": "",
+    "text": "You can download my resume directly: Download PDF"
+  },
+  {
+    "objectID": "resume.html#preview",
+    "href": "resume.html#preview",
+    "title": "Resume",
+    "section": "Preview",
+    "text": "Preview"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Winner of the 2024 Open Source for Good Hackathon\nPresented our app to hundreds of open source developers and global stakeholders.\nAI app to track water usage from food.\n\n\n\n\n\nI have done hundreds of project euler problems in R, Python, and C++\nA sample of these problems can be found at PE Repo\n\n\n\n\n\nI have competed in some kaggle competitions recently, you can find my work at: Kaggle Profile"
+  },
+  {
+    "objectID": "projects.html#featured-projects",
+    "href": "projects.html#featured-projects",
+    "title": "Projects",
+    "section": "",
+    "text": "Winner of the 2024 Open Source for Good Hackathon\nPresented our app to hundreds of open source developers and global stakeholders.\nAI app to track water usage from food.\n\n\n\n\n\nI have done hundreds of project euler problems in R, Python, and C++\nA sample of these problems can be found at PE Repo\n\n\n\n\n\nI have competed in some kaggle competitions recently, you can find my work at: Kaggle Profile"
+  },
+  {
+    "objectID": "projects.html#more-projects-coming-soon",
+    "href": "projects.html#more-projects-coming-soon",
+    "title": "Projects",
+    "section": "More Projects Coming Soon",
+    "text": "More Projects Coming Soon\nI am working on new projects in my free time outside of cQuant. Check back soon for updates, or visit my GitHub profile to see what I’m currently working on."
   }
 ]
