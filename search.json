@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My First Blog Post\n\n\n\n\n\n\nR\n\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 20, 2024\n\n\nLuke\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "Welcome to my personal website. I’m passionate about [your interests/field]. Here you’ll find my thoughts, projects, and experiences in [your field/interests].\nYou can check out my blog for my latest writings, view my projects, or download my resume."
+  },
+  {
+    "objectID": "index.html#hello-im-luke",
+    "href": "index.html#hello-im-luke",
+    "title": "Welcome!",
+    "section": "",
+    "text": "Welcome to my personal website. I’m passionate about [your interests/field]. Here you’ll find my thoughts, projects, and experiences in [your field/interests].\nYou can check out my blog for my latest writings, view my projects, or download my resume."
+  },
+  {
+    "objectID": "About/website.html",
+    "href": "About/website.html",
+    "title": "Luke's Personal Website",
+    "section": "",
+    "text": "Personal Website\nMy name is Luke and I want to make a website using R. I already have a domain and github pages set up to deploy. - Personal website built in R using quatro - Want to be able to create blogs and project in md files - Want to have a landing page with a picture and a few other files file resume available for download - Want to have some links to linkedin and medium on landing page as well"
+  },
+  {
+    "objectID": "blog/posts/first-post/index.html",
+    "href": "blog/posts/first-post/index.html",
+    "title": "My First Blog Post",
+    "section": "",
+    "text": "In this post, I’ll demonstrate how to create a simple visualization using R.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Create some sample data\ndata &lt;- data.frame(\n  x = 1:10,\n  y = rnorm(10)\n)\n\n# Create a plot\nggplot(data, aes(x = x, y = y)) +\n  geom_line() +\n  geom_point() +\n  theme_minimal() +\n  labs(\n    title = \"Sample Plot\",\n    x = \"X axis\",\n    y = \"Y axis\"\n  )\n\n\n\n\n\n\n\n\nThis is just a simple example of what you can do with R and Quarto. You can include:\n\nCode blocks with syntax highlighting\nMathematical equations\nImages and figures\nTables\nCitations\n\nStay tuned for more interesting content!"
+  },
+  {
+    "objectID": "blog/posts/first-post/index.html#welcome-to-my-first-blog-post",
+    "href": "blog/posts/first-post/index.html#welcome-to-my-first-blog-post",
+    "title": "My First Blog Post",
+    "section": "",
+    "text": "In this post, I’ll demonstrate how to create a simple visualization using R.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Create some sample data\ndata &lt;- data.frame(\n  x = 1:10,\n  y = rnorm(10)\n)\n\n# Create a plot\nggplot(data, aes(x = x, y = y)) +\n  geom_line() +\n  geom_point() +\n  theme_minimal() +\n  labs(\n    title = \"Sample Plot\",\n    x = \"X axis\",\n    y = \"Y axis\"\n  )\n\n\n\n\n\n\n\n\nThis is just a simple example of what you can do with R and Quarto. You can include:\n\nCode blocks with syntax highlighting\nMathematical equations\nImages and figures\nTables\nCitations\n\nStay tuned for more interesting content!"
+  }
+]

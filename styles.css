@@ -1,0 +1,25 @@
+/* Custom CSS styles */
+.navbar {
+    padding: 1rem 0;
+}
+
+.quarto-title-block .quarto-title-banner {
+    background: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.about-image {
+    border-radius: 50%;
+    max-width: 200px;
+}
+
+.blog-post {
+    margin-bottom: 2rem;
+}
+
+.footer {
+    margin-top: 2rem;
+    padding: 2rem 0;
+    background: #f8f9fa;
+    text-align: center;
+} 
