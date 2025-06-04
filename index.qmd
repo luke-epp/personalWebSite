@@ -1,0 +1,22 @@
+---
+title: "Welcome!"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/your-profile
+    - icon: github
+      text: Github
+      href: https://github.com/your-profile
+    - icon: medium
+      text: Medium
+      href: https://medium.com/@your-profile
+---
+
+## Hello, I'm Luke!
+
+Welcome to my personal website. I'm passionate about [your interests/field]. Here you'll find my thoughts, projects, and experiences in [your field/interests].
+
+You can check out my [blog](/blog) for my latest writings, view my [projects](/projects), or download my [resume](/resume). 

@@ -1,0 +1,47 @@
+---
+title: "My First Blog Post"
+author: "Luke"
+date: "2024-03-20"
+categories: [R, Data Analysis]
+image: "thumbnail.jpg"
+---
+
+## Welcome to my first blog post!
+
+In this post, I'll demonstrate how to create a simple visualization using R.
+
+```{r}
+#| label: setup
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(dplyr)
+
+# Create some sample data
+data <- data.frame(
+  x = 1:10,
+  y = rnorm(10)
+)
+
+# Create a plot
+ggplot(data, aes(x = x, y = y)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal() +
+  labs(
+    title = "Sample Plot",
+    x = "X axis",
+    y = "Y axis"
+  )
+```
+
+This is just a simple example of what you can do with R and Quarto. You can include:
+
+- Code blocks with syntax highlighting
+- Mathematical equations
+- Images and figures
+- Tables
+- Citations
+
+Stay tuned for more interesting content! 

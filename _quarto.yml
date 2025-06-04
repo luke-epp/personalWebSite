@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Luke's Personal Website"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: blog/index.qmd
+        text: Blog
+      - href: projects.qmd
+        text: Projects
+      - href: resume.qmd
+        text: Resume
+    right:
+      - icon: linkedin
+        href: https://linkedin.com/in/your-profile
+      - icon: medium
+        href: https://medium.com/@your-profile
+      - icon: github
+        href: https://github.com/your-profile
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true 
