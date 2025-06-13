@@ -1,0 +1,93 @@
+---
+title: "Project Euler One"
+author: "Luke"
+date: "2024-03-20"
+categories: [R, Project Euler]
+image: "thumbnail.jpg"
+---
+
+## Project Euler 
+
+[Project Euler](https://projecteuler.net/about) is similar to LeetCode or other coding style interview question forums. Project Euler focuses on more mathematical challenges, which for mathematical programming is perfect. The first 100 problems allow solution sharing and whatnot, but beyond that, there is supposed to be no sharing on the broader internet of solutions. 
+
+### The First Question
+If we list all the natural numbers below $10$ that are multiples of $3$ or $5$, we get $3, 5, 6$ and $9$. The sum of these multiples is $23$.
+Find the sum of all the multiples of $3$ or $5$ below $1000$.
+
+Here is my first naive solution:
+```{r}
+multiples_3_5_below = function(n) {
+  mult_list = c()
+  for (i in 1:(n - 1)) {
+    if (i %% 3 == 0 | i %% 5 == 0) {
+      mult_list = c(mult_list, i)
+      # logging
+      # print(i)
+    }
+  }
+  sum = sum(mult_list)
+  return(sum)
+}
+# Testing
+n = 10
+test_sum = multiples_3_5_below(n)
+print(test_sum)
+test_res_one = test_sum == 23
+print('TEST ONE PASS?')
+print(test_res_one)
+# Final Result 
+n = 1000
+test_sum = multiples_3_5_below(n)
+print(test_sum)
+```
+
+This answer turns out to be right, but how fast is our solution?
+
+```{r}
+# Final Result 
+n = 1000
+test_time = system.time(multiples_3_5_below(n))
+print(test_time)
+```
+
+It's still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn't going to get us anywhere. What if there was a closed form solution to this or at least something better? 
+
+We're going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.
+
+Implementing this fast function with some help from Mr. Gauss: [Gauss Sum](https://letstalkscience.ca/educational-resources/backgrounders/gauss-summation)
+
+```{r}
+multiples_3_5_below = function(n) {
+  three_bound = ceiling(n / 3) - 1 
+  five_bound = ceiling(n / 5) - 1
+  fifteen_bound = max(0 , ceiling(n / 15) - 1 ) # note the max here for our small test case
+  # gauss sum is n * (n +1) / 2
+  five_sum = 5 * (five_bound * (five_bound + 1) / 2)
+  three_sum = 3 * (three_bound * (three_bound + 1) / 2)
+  fifteen_sum = 15 * (fifteen_bound * (fifteen_bound + 1) / 2)
+  result = five_sum + three_sum - fifteen_sum
+  return(result)
+}
+# Testing
+n = 10
+test_sum = multiples_3_5_below(n)
+print(test_sum)
+test_res_one = test_sum == 23
+print('TEST ONE PASS?')
+print(test_res_one)
+# Final Result 
+n = 1000
+test_sum = multiples_3_5_below(n)
+print(test_sum)
+```
+
+It's rare to get a closed form with no loop! But many project euler problems have some mathematical reasoning to get around hard computer programming. Let's time this new solution:
+
+```{r}
+# Final Result 
+n = 1000
+test_time = system.time(multiples_3_5_below(n))
+print(test_time)
+```
+
+Oh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this.

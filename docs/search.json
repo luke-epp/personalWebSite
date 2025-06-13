@@ -4,7 +4,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "My First Blog Post\n\n\n\n\n\n\nR\n\n\nData Analysis\n\n\n\n\n\n\n\n\n\nMar 20, 2024\n\n\nLuke\n\n\n\n\n\n\nNo matching items"
+    "text": "Project Euler One\n\n\n\n\n\n\nR\n\n\nProject Euler\n\n\n\n\n\n\n\n\n\nMar 20, 2024\n\n\nLuke\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -26,20 +26,6 @@
     "title": "Luke's Personal Website",
     "section": "",
     "text": "Personal Website\nMy name is Luke and I want to make a website using R. I already have a domain and github pages set up to deploy. - Personal website built in R using quatro - Want to be able to create blogs and project in md files - Want to have a landing page with a picture and a few other files file resume available for download - Want to have some links to linkedin and medium on landing page as well"
-  },
-  {
-    "objectID": "blog/posts/first-post/index.html",
-    "href": "blog/posts/first-post/index.html",
-    "title": "My First Blog Post",
-    "section": "",
-    "text": "In this post, I’ll demonstrate how to create a simple visualization using R.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Create some sample data\ndata &lt;- data.frame(\n  x = 1:10,\n  y = rnorm(10)\n)\n\n# Create a plot\nggplot(data, aes(x = x, y = y)) +\n  geom_line() +\n  geom_point() +\n  theme_minimal() +\n  labs(\n    title = \"Sample Plot\",\n    x = \"X axis\",\n    y = \"Y axis\"\n  )\n\n\n\n\n\n\n\n\nThis is just a simple example of what you can do with R and Quarto. You can include:\n\nCode blocks with syntax highlighting\nMathematical equations\nImages and figures\nTables\nCitations\n\nStay tuned for more interesting content!"
-  },
-  {
-    "objectID": "blog/posts/first-post/index.html#welcome-to-my-first-blog-post",
-    "href": "blog/posts/first-post/index.html#welcome-to-my-first-blog-post",
-    "title": "My First Blog Post",
-    "section": "",
-    "text": "In this post, I’ll demonstrate how to create a simple visualization using R.\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n# Create some sample data\ndata &lt;- data.frame(\n  x = 1:10,\n  y = rnorm(10)\n)\n\n# Create a plot\nggplot(data, aes(x = x, y = y)) +\n  geom_line() +\n  geom_point() +\n  theme_minimal() +\n  labs(\n    title = \"Sample Plot\",\n    x = \"X axis\",\n    y = \"Y axis\"\n  )\n\n\n\n\n\n\n\n\nThis is just a simple example of what you can do with R and Quarto. You can include:\n\nCode blocks with syntax highlighting\nMathematical equations\nImages and figures\nTables\nCitations\n\nStay tuned for more interesting content!"
   },
   {
     "objectID": "resume.html",
@@ -82,5 +68,19 @@
     "title": "Projects",
     "section": "More Projects Coming Soon",
     "text": "More Projects Coming Soon\nI am working on new projects in my free time outside of cQuant. Check back soon for updates, or visit my GitHub profile to see what I’m currently working on."
+  },
+  {
+    "objectID": "blog/posts/project-euler-one/index.html",
+    "href": "blog/posts/project-euler-one/index.html",
+    "title": "Project Euler One",
+    "section": "",
+    "text": "Project Euler is similar to LeetCode or other coding style interview question forums. Project Euler focuses on more mathematical challenges, which for mathematical programming is perfect. The first 100 problems allow solution sharing and whatnot, but beyond that, there is supposed to be no sharing on the broader internet of solutions.\n\n\nIf we list all the natural numbers below \\(10\\) that are multiples of \\(3\\) or \\(5\\), we get \\(3, 5, 6\\) and \\(9\\). The sum of these multiples is \\(23\\). Find the sum of all the multiples of \\(3\\) or \\(5\\) below \\(1000\\).\nHere is my first naive solution:\n\nmultiples_3_5_below = function(n) {\n  mult_list = c()\n  for (i in 1:(n - 1)) {\n    if (i %% 3 == 0 | i %% 5 == 0) {\n      mult_list = c(mult_list, i)\n      # logging\n      # print(i)\n    }\n  }\n  sum = sum(mult_list)\n  return(sum)\n}\n# Testing\nn = 10\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 23\n\ntest_res_one = test_sum == 23\nprint('TEST ONE PASS?')\n\n[1] \"TEST ONE PASS?\"\n\nprint(test_res_one)\n\n[1] TRUE\n\n# Final Result \nn = 1000\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 233168\n\n\nThis answer turns out to be right, but how fast is our solution?\n\n# Final Result \nn = 1000\ntest_time = system.time(multiples_3_5_below(n))\nprint(test_time)\n\n   user  system elapsed \n      0       0       0 \n\n\nIt’s still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn’t going to get us anywhere. What if there was a closed form solution to this or at least something better?\nWe’re going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.\nImplementing this fast function with some help from Mr. Gauss: Gauss Sum\n\nmultiples_3_5_below = function(n) {\n  three_bound = ceiling(n / 3) - 1 \n  five_bound = ceiling(n / 5) - 1\n  fifteen_bound = max(0 , ceiling(n / 15) - 1 ) # note the max here for our small test case\n  # gauss sum is n * (n +1) / 2\n  five_sum = 5 * (five_bound * (five_bound + 1) / 2)\n  three_sum = 3 * (three_bound * (three_bound + 1) / 2)\n  fifteen_sum = 15 * (fifteen_bound * (fifteen_bound + 1) / 2)\n  result = five_sum + three_sum - fifteen_sum\n  return(result)\n}\n# Testing\nn = 10\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 23\n\ntest_res_one = test_sum == 23\nprint('TEST ONE PASS?')\n\n[1] \"TEST ONE PASS?\"\n\nprint(test_res_one)\n\n[1] TRUE\n\n# Final Result \nn = 1000\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 233168\n\n\nIt’s rare to get a closed form with no loop! But many project euler problems have some mathematical reasoning to get around hard computer programming. Let’s time this new solution:\n\n# Final Result \nn = 1000\ntest_time = system.time(multiples_3_5_below(n))\nprint(test_time)\n\n   user  system elapsed \n      0       0       0 \n\n\nOh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this."
+  },
+  {
+    "objectID": "blog/posts/project-euler-one/index.html#project-euler",
+    "href": "blog/posts/project-euler-one/index.html#project-euler",
+    "title": "Project Euler One",
+    "section": "",
+    "text": "Project Euler is similar to LeetCode or other coding style interview question forums. Project Euler focuses on more mathematical challenges, which for mathematical programming is perfect. The first 100 problems allow solution sharing and whatnot, but beyond that, there is supposed to be no sharing on the broader internet of solutions.\n\n\nIf we list all the natural numbers below \\(10\\) that are multiples of \\(3\\) or \\(5\\), we get \\(3, 5, 6\\) and \\(9\\). The sum of these multiples is \\(23\\). Find the sum of all the multiples of \\(3\\) or \\(5\\) below \\(1000\\).\nHere is my first naive solution:\n\nmultiples_3_5_below = function(n) {\n  mult_list = c()\n  for (i in 1:(n - 1)) {\n    if (i %% 3 == 0 | i %% 5 == 0) {\n      mult_list = c(mult_list, i)\n      # logging\n      # print(i)\n    }\n  }\n  sum = sum(mult_list)\n  return(sum)\n}\n# Testing\nn = 10\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 23\n\ntest_res_one = test_sum == 23\nprint('TEST ONE PASS?')\n\n[1] \"TEST ONE PASS?\"\n\nprint(test_res_one)\n\n[1] TRUE\n\n# Final Result \nn = 1000\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 233168\n\n\nThis answer turns out to be right, but how fast is our solution?\n\n# Final Result \nn = 1000\ntest_time = system.time(multiples_3_5_below(n))\nprint(test_time)\n\n   user  system elapsed \n      0       0       0 \n\n\nIt’s still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn’t going to get us anywhere. What if there was a closed form solution to this or at least something better?\nWe’re going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.\nImplementing this fast function with some help from Mr. Gauss: Gauss Sum\n\nmultiples_3_5_below = function(n) {\n  three_bound = ceiling(n / 3) - 1 \n  five_bound = ceiling(n / 5) - 1\n  fifteen_bound = max(0 , ceiling(n / 15) - 1 ) # note the max here for our small test case\n  # gauss sum is n * (n +1) / 2\n  five_sum = 5 * (five_bound * (five_bound + 1) / 2)\n  three_sum = 3 * (three_bound * (three_bound + 1) / 2)\n  fifteen_sum = 15 * (fifteen_bound * (fifteen_bound + 1) / 2)\n  result = five_sum + three_sum - fifteen_sum\n  return(result)\n}\n# Testing\nn = 10\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 23\n\ntest_res_one = test_sum == 23\nprint('TEST ONE PASS?')\n\n[1] \"TEST ONE PASS?\"\n\nprint(test_res_one)\n\n[1] TRUE\n\n# Final Result \nn = 1000\ntest_sum = multiples_3_5_below(n)\nprint(test_sum)\n\n[1] 233168\n\n\nIt’s rare to get a closed form with no loop! But many project euler problems have some mathematical reasoning to get around hard computer programming. Let’s time this new solution:\n\n# Final Result \nn = 1000\ntest_time = system.time(multiples_3_5_below(n))\nprint(test_time)\n\n   user  system elapsed \n      0       0       0 \n\n\nOh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this."
   }
 ]

@@ -9,7 +9,7 @@
 <meta name="author" content="Luke">
 <meta name="dcterms.date" content="2024-03-20">
 
-<title>My First Blog Post – Luke’s Personal Website</title>
+<title>Project Euler One – Luke’s Personal Website</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,6 +105,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -176,7 +205,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#welcome-to-my-first-blog-post" id="toc-welcome-to-my-first-blog-post" class="nav-link active" data-scroll-target="#welcome-to-my-first-blog-post">Welcome to my first blog post!</a></li>
+  <li><a href="#project-euler" id="toc-project-euler" class="nav-link active" data-scroll-target="#project-euler">Project Euler</a>
+  <ul class="collapse">
+  <li><a href="#the-first-question" id="toc-the-first-question" class="nav-link" data-scroll-target="#the-first-question">The First Question</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -185,10 +217,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My First Blog Post</h1>
+<h1 class="title">Project Euler One</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R</div>
-    <div class="quarto-category">Data Analysis</div>
+    <div class="quarto-category">Project Euler</div>
   </div>
   </div>
 
@@ -218,48 +250,115 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="welcome-to-my-first-blog-post" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-my-first-blog-post">Welcome to my first blog post!</h2>
-<p>In this post, I’ll demonstrate how to create a simple visualization using R.</p>
+<section id="project-euler" class="level2">
+<h2 class="anchored" data-anchor-id="project-euler">Project Euler</h2>
+<p><a href="https://projecteuler.net/about">Project Euler</a> is similar to LeetCode or other coding style interview question forums. Project Euler focuses on more mathematical challenges, which for mathematical programming is perfect. The first 100 problems allow solution sharing and whatnot, but beyond that, there is supposed to be no sharing on the broader internet of solutions.</p>
+<section id="the-first-question" class="level3">
+<h3 class="anchored" data-anchor-id="the-first-question">The First Question</h3>
+<p>If we list all the natural numbers below <span class="math inline">\(10\)</span> that are multiples of <span class="math inline">\(3\)</span> or <span class="math inline">\(5\)</span>, we get <span class="math inline">\(3, 5, 6\)</span> and <span class="math inline">\(9\)</span>. The sum of these multiples is <span class="math inline">\(23\)</span>. Find the sum of all the multiples of <span class="math inline">\(3\)</span> or <span class="math inline">\(5\)</span> below <span class="math inline">\(1000\)</span>.</p>
+<p>Here is my first naive solution:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some sample data</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a plot</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Sample Plot"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"X axis"</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Y axis"</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/setup-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>multiples_3_5_below <span class="ot">=</span> <span class="cf">function</span>(n) {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  mult_list <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(n <span class="sc">-</span> <span class="dv">1</span>)) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">%%</span> <span class="dv">3</span> <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> i <span class="sc">%%</span> <span class="dv">5</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      mult_list <span class="ot">=</span> <span class="fu">c</span>(mult_list, i)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># logging</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># print(i)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  sum <span class="ot">=</span> <span class="fu">sum</span>(mult_list)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(sum)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>test_sum <span class="ot">=</span> <span class="fu">multiples_3_5_below</span>(n)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>test_res_one <span class="ot">=</span> test_sum <span class="sc">==</span> <span class="dv">23</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'TEST ONE PASS?'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "TEST ONE PASS?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_res_one)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Result </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>test_sum <span class="ot">=</span> <span class="fu">multiples_3_5_below</span>(n)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 233168</code></pre>
 </div>
 </div>
+<p>This answer turns out to be right, but how fast is our solution?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Result </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>test_time <span class="ot">=</span> <span class="fu">system.time</span>(<span class="fu">multiples_3_5_below</span>(n))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+      0       0       0 </code></pre>
 </div>
-<p>This is just a simple example of what you can do with R and Quarto. You can include:</p>
-<ul>
-<li>Code blocks with syntax highlighting</li>
-<li>Mathematical equations</li>
-<li>Images and figures</li>
-<li>Tables</li>
-<li>Citations</li>
-</ul>
-<p>Stay tuned for more interesting content!</p>
+</div>
+<p>It’s still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn’t going to get us anywhere. What if there was a closed form solution to this or at least something better?</p>
+<p>We’re going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.</p>
+<p>Implementing this fast function with some help from Mr.&nbsp;Gauss: <a href="https://letstalkscience.ca/educational-resources/backgrounders/gauss-summation">Gauss Sum</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>multiples_3_5_below <span class="ot">=</span> <span class="cf">function</span>(n) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  three_bound <span class="ot">=</span> <span class="fu">ceiling</span>(n <span class="sc">/</span> <span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  five_bound <span class="ot">=</span> <span class="fu">ceiling</span>(n <span class="sc">/</span> <span class="dv">5</span>) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  fifteen_bound <span class="ot">=</span> <span class="fu">max</span>(<span class="dv">0</span> , <span class="fu">ceiling</span>(n <span class="sc">/</span> <span class="dv">15</span>) <span class="sc">-</span> <span class="dv">1</span> ) <span class="co"># note the max here for our small test case</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># gauss sum is n * (n +1) / 2</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  five_sum <span class="ot">=</span> <span class="dv">5</span> <span class="sc">*</span> (five_bound <span class="sc">*</span> (five_bound <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  three_sum <span class="ot">=</span> <span class="dv">3</span> <span class="sc">*</span> (three_bound <span class="sc">*</span> (three_bound <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  fifteen_sum <span class="ot">=</span> <span class="dv">15</span> <span class="sc">*</span> (fifteen_bound <span class="sc">*</span> (fifteen_bound <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> five_sum <span class="sc">+</span> three_sum <span class="sc">-</span> fifteen_sum</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Testing</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>test_sum <span class="ot">=</span> <span class="fu">multiples_3_5_below</span>(n)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>test_res_one <span class="ot">=</span> test_sum <span class="sc">==</span> <span class="dv">23</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'TEST ONE PASS?'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "TEST ONE PASS?"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_res_one)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Result </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>test_sum <span class="ot">=</span> <span class="fu">multiples_3_5_below</span>(n)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 233168</code></pre>
+</div>
+</div>
+<p>It’s rare to get a closed form with no loop! But many project euler problems have some mathematical reasoning to get around hard computer programming. Let’s time this new solution:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final Result </span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>test_time <span class="ot">=</span> <span class="fu">system.time</span>(<span class="fu">multiples_3_5_below</span>(n))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   user  system elapsed 
+      0       0       0 </code></pre>
+</div>
+</div>
+<p>Oh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
