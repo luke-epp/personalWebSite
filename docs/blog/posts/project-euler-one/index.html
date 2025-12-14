@@ -302,11 +302,11 @@ window.Quarto = {
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-      0       0       0 </code></pre>
+  0.001   0.000   0.001 </code></pre>
 </div>
 </div>
 <p>It’s still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn’t going to get us anywhere. What if there was a closed form solution to this or at least something better?</p>
-<p>We’re going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.</p>
+<p>We’re going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till (n / 3) - 1 plus the sum fo the integers up till (n / 5) - 1 minus their overlap which is just the fifteens.</p>
 <p>Implementing this fast function with some help from Mr.&nbsp;Gauss: <a href="https://letstalkscience.ca/educational-resources/backgrounders/gauss-summation">Gauss Sum</a></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>multiples_3_5_below <span class="ot">=</span> <span class="cf">function</span>(n) {</span>
@@ -355,7 +355,7 @@ window.Quarto = {
       0       0       0 </code></pre>
 </div>
 </div>
-<p>Oh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this.</p>
+<p>While the time difference is negligible on render, this actually takes quite a bit less time.</p>
 
 
 </section>

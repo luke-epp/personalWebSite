@@ -3,7 +3,6 @@ title: "Project Euler One"
 author: "Luke"
 date: "2024-03-20"
 categories: [R, Project Euler]
-image: "thumbnail.jpg"
 ---
 
 ## Project Euler 
@@ -52,7 +51,7 @@ print(test_time)
 
 It's still pretty fast on my machine, but later in the project euler game this kind of brute force solutioning isn't going to get us anywhere. What if there was a closed form solution to this or at least something better? 
 
-We're going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till $ (n / 3) - 1 $ plus the sum fo the integers up till $ (n / 5) - 1 $ minus their overlap which is just the fifteens.
+We're going to get the sum of every 3rd number and every 5th number up till n-1, this is the same as 3 times the sum of integers up till (n / 3) - 1 plus the sum fo the integers up till (n / 5) - 1  minus their overlap which is just the fifteens.
 
 Implementing this fast function with some help from Mr. Gauss: [Gauss Sum](https://letstalkscience.ca/educational-resources/backgrounders/gauss-summation)
 
@@ -90,4 +89,4 @@ test_time = system.time(multiples_3_5_below(n))
 print(test_time)
 ```
 
-Oh yeah, it says 0 time on my machine! Nice! That does it for problem one, keep an eye out for more problems if you enjoyed this.
+While the time difference is negligible on render, this actually takes quite a bit less time.

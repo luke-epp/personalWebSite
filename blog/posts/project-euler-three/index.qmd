@@ -1,0 +1,16 @@
+---
+title: "Project Euler Three"
+author: "Luke"
+date: "2024-03-20"
+categories: [R, Project Euler, C++]
+---
+
+# Question Three
+The prime factors of $13195$ are $5, 7, 13$ and $29$
+What is the largest prime factor of the number $600851475143$?
+
+Prime factorization is one of the great modern questions of math and computer science. One relatively quick way of finding prime factors for a number is called the [Sieve Of Ersatosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+
+Implementing the Sieve is a kind of a dynamic programming solution, we need to list a lot of numbers and eliminate them as we go.
+
+This time I am going to benchmark python loops against cpp loops against r loops. I am going to use a few tricks, like only doing odd numbers

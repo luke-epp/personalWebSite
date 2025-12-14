@@ -1,0 +1,42 @@
+---
+title: "Project Euler Four"
+author: "Luke"
+date: "2024-03-20"
+categories: [R, Project Euler]
+---
+
+## Project Euler Four
+
+[Question](https://projecteuler.net/problem=4)
+
+
+<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two $2$-digit numbers is $9009 = 91 \times 99$.</p>
+<p>Find the largest palindrome made from the product of two $3$-digit numbers.</p>
+
+Let's try using some modern packages for this, collapse is the current bleeding edge of data manipulation libraries in R
+
+```{r}
+library(magrittr)
+n_digits = 3
+palindrome_product_below = function(n_digits) {
+
+    n_digit_nums = 10^(n_digits-1):10^n_digits
+
+    numbers_one= tibble::tibble(NumsOne = n_digit_nums)
+    numbers_two = tibble::tibble(NumsTwo = n_digit_nums)
+
+    total_nums = dplyr::cross_join(numbers_one, numbers_two) |> 
+        collapse::fmutate(Product = NumsOne * NumsTwo) |> 
+        collapse::fmutate(StringNums = as.character(Product)) |> 
+        collapse::fmutate(RevStringNums = stringi::stri_reverse(StringNums)) |> 
+        collapse::fsubset(StringNums == RevStringNums) |> 
+        dplyr::pull(Product) |> 
+        max()
+
+    return(total_nums)
+
+}
+print(palindrome_product_below(3))
+```
+
+The syntax and piping makes collapse really nice to use, the cross join is how we get a vectorized approach and are able to leverage collapse for subsequent operations. Fast and clean.

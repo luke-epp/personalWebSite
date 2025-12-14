@@ -15,7 +15,7 @@ about:
       href: https://medium.com/@lukeepp
 ---
 
-## Hello, I'm Luke!
+## Hello!
 
 Welcome to my personal website. I'm currently a quantitative developer at cQuant, outside of work and programming I enjoy rock climbing, reading, birding, and sports.
 

@@ -14,3 +14,4 @@ else
     echo "❌ There was an error building the website. Please check the error messages above."
     exit 1
 fi 
+echo "lukeepp.com" > docs/CNAME
