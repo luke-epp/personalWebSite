@@ -256,7 +256,7 @@ A palindromic number reads the same both ways. The largest palindrome made from 
 <p>
 Find the largest palindrome made from the product of two <span class="math inline">\(3\)</span>-digit numbers.
 </p>
-<p>Let’s try using some modern packages for this, collapse is the current bleeding edge of data manipulation libraries in R</p>
+<p>Let’s try using some modern packages for this, collapse is the current bleeding edge of data manipulation libraries in R, with similar speed benchmarks to polars (the fastest data manipulation package in python land).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n_digits <span class="ot">=</span> <span class="dv">3</span></span>
@@ -283,7 +283,7 @@ Find the largest palindrome made from the product of two <span class="math inlin
 <pre><code>[1] 906609</code></pre>
 </div>
 </div>
-<p>The syntax and piping makes collapse really nice to use, the cross join is how we get a vectorized approach and are able to leverage collapse for subsequent operations. Fast and clean.</p>
+<p>This is a simple enough operation to do, but these dplyr style verbs with speed optimization scale well to many more complex problems.</p>
 
 
 </section>

@@ -3,9 +3,7 @@
     "listing": "/blog/index.html",
     "items": [
       "/blog/posts/project-euler-one/index.html",
-      "/blog/posts/project-euler-two/index.html",
-      "/blog/posts/project-euler-four/index.html",
-      "/blog/posts/project-euler-three/index.html"
+      "/blog/posts/project-euler-four/index.html"
     ]
   }
 ]

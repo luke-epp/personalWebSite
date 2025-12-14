@@ -13,7 +13,7 @@ categories: [R, Project Euler]
 <p>A palindromic number reads the same both ways. The largest palindrome made from the product of two $2$-digit numbers is $9009 = 91 \times 99$.</p>
 <p>Find the largest palindrome made from the product of two $3$-digit numbers.</p>
 
-Let's try using some modern packages for this, collapse is the current bleeding edge of data manipulation libraries in R
+Let's try using some modern packages for this, collapse is the current bleeding edge of data manipulation libraries in R, with similar speed benchmarks to polars (the fastest data manipulation package in python land).
 
 ```{r}
 library(magrittr)
@@ -39,4 +39,4 @@ palindrome_product_below = function(n_digits) {
 print(palindrome_product_below(3))
 ```
 
-The syntax and piping makes collapse really nice to use, the cross join is how we get a vectorized approach and are able to leverage collapse for subsequent operations. Fast and clean.
+This is a simple enough operation to do, but these dplyr style verbs with speed optimization scale well to many more complex problems.
